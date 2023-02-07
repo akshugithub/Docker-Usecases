@@ -3,6 +3,6 @@ services:
   redis-server: 
     image: 'redis'
   node-app:
-    build: . -t ijaz21/nodejsredis
+    build: .
     ports:
       - "8888:8888"
