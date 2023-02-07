@@ -1,8 +1,21 @@
 const express = require ('express');
+const redis = require('redis')
 const app = express();
+const client = redis.createClient()
 const post = require('./routes/post');
 const hoganMiddleware = require('hogan-middleware');
 const path = require('path');
+
+//Set initial visits
+client.set('visits', 0);
+
+//defining the root endpoint
+app.get('/', (req, res) => {
+    client.get('visits', (err, visits) => {
+        res.send('Number of visits is: ' + visits + 1)
+        client.set('visits', parseInt(visits) + 1)
+    })
+})
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','mustache');
