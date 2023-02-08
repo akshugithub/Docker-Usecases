@@ -6,10 +6,6 @@ const client = redis.createClient({
     port: 6379
 })
 
-const post = require('./routes/post');
-const hoganMiddleware = require('hogan-middleware');
-const path = require('path');
-
 //Set initial visits
 client.set('visits', 0);
 
@@ -20,6 +16,10 @@ app.get('/', (req, res) => {
         client.set('visits', parseInt(visits) + 1)
     })
 })
+
+const post = require('./routes/post');
+const hoganMiddleware = require('hogan-middleware');
+const path = require('path');
 
 app.set('views',path.join(__dirname,'views'));
 app.set('view engine','mustache');
