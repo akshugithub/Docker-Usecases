@@ -7,7 +7,7 @@ pipeline {
       stage('GIT checkout') {
            steps {
              
-                  git branch: 'docker-mulstage-react-nginx-app', url: 'https://github.com/ijazclouddev/nodedocker_app.git'
+                  git branch: 'docker-mulstage-react-nginx-app', url: 'https://github.com/akshugithub/Docker-Usecases.git'
              
           }
         }
