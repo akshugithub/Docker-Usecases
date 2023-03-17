@@ -20,20 +20,11 @@ pipeline {
             }
         }
         
-          /*stage('Docker Compose Execution'){
-            steps{
-                
-             sh "docker build DockerUC1/ -t ijaz21/simpleexpressnodejs"
-             sh "docker-compose down"
-              sh "docker-compose up -d"
-              
-            }
-        }*/
         stage('Docker run ReactNginx'){
             steps{
-                withCredentials([string(credentialsId: 'dockerpassword', variable: 'Dockerpassword')]) {
+                withCredentials([string(credentialsId: 'reactnginx', variable: 'reactnginx')]) {
                   sh "docker stop reactnginxc"
-                     sh "docker rm reactnginxc"
+                  sh "docker rm reactnginxc"
                 sh "docker run -d -p 2000:80 --name reactnginxc akshayamurali/reactnginx"
                 }
             }
