@@ -1,15 +1,13 @@
 pipeline {
     agent any
     tools { 
-        maven 'Maven_Home' 
-        jdk 'Java_Home' 
+        maven 'maven' 
            }
            stages {
       stage('GIT checkout') {
            steps {
              
-           //     git branch: 'main', url: 'https://github.com/ijazclouddev/CI-CD-Pipeline-with-Jenkins-deploy-tomcat'
-                  git branch: 'docker-compose-nodejs-redis-app', url: 'https://github.com/ijazclouddev/nodedocker_app.git'
+                  git branch: 'docker-compose-multicontainers', url: 'https://github.com/akshugithub/Docker-Usecases.git'
              
           }
         }
@@ -28,8 +26,7 @@ pipeline {
          stage('Docker Build'){
             steps{
                 
-             /*sh "docker build DockerUC1/ -t ijaz21/simpleexpressnodejs"*/
-              sh "docker build . -t ijaz21/nodeexpredis"
+              sh "docker build . -t akshayamurali/noderedis"
               
             }
         }
@@ -37,18 +34,18 @@ pipeline {
         stage('Push to dockerHub'){
              steps{
                  withCredentials([string(credentialsId: 'dockerpassword', variable: 'Dockerpassword')]) {
-                  sh "docker login -u ijaz21 -p ${Dockerpassword}"
+                  sh "docker login -u akshayamurali -p ${Dockerpassword}"
                  
                  }
                  
-                 sh "docker push ijaz21/nodeexpredis"
+                 sh "docker push akshayamurali/noderedis"
              }
          }
          
           stage('Docker Compose Execution'){
             steps{
                 
-             /*sh "docker build DockerUC1/ -t ijaz21/simpleexpressnodejs"*/
+             /*sh "docker build DockerUC1/ -t akshayamurali/simpleexpressnodejs"*/
              sh "docker-compose down"
               sh "docker-compose up -d"
               
