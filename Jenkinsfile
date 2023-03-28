@@ -31,16 +31,16 @@ pipeline {
             }
         }
         
-        stage('Push to dockerHub'){
-             steps{
-                 withCredentials([string(credentialsId: 'dockerpassword', variable: 'Dockerpassword')]) {
-                  sh "docker login -u akshayamurali -p ${Dockerpassword}"
+    //    stage('Push to dockerHub'){
+      //       steps{
+        //         withCredentials([string(credentialsId: 'dockerpassword', variable: 'Dockerpassword')]) {
+          //        sh "docker login -u akshayamurali -p ${Dockerpassword}"
                  
-                 }
+            //     }
                  
-                 sh "docker push akshayamurali/noderedis"
-             }
-         }
+              //   sh "docker push akshayamurali/noderedis"
+            // }
+       //  }
          
           stage('Docker Compose Execution'){
             steps{
