@@ -23,13 +23,13 @@ pipeline {
             }
         }*/
         
-         stage('Docker Build'){
+      /*   stage('Docker Build'){
             steps{
                 
               sh "docker build . -t akshayamurali/noderedis"
               
             }
-        }
+     */   }
         
     //    stage('Push to dockerHub'){
       //       steps{
@@ -45,7 +45,7 @@ pipeline {
           stage('Docker Compose Execution'){
             steps{
                 
-             /*sh "docker build DockerUC1/ -t akshayamurali/simpleexpressnodejs"*/
+             
              sh "docker-compose down"
               sh "docker-compose up -d"
               
