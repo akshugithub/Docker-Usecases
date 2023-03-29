@@ -23,13 +23,6 @@ pipeline {
             }
         }*/
         
-      /*   stage('Docker Build'){
-            steps{
-                
-              sh "docker build . -t akshayamurali/noderedis"
-              
-            }
-     */   }
         
     //    stage('Push to dockerHub'){
       //       steps{
